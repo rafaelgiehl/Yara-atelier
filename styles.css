@@ -36,6 +36,14 @@ header .logo h1 {
     font-size: 2.5rem;
 }
 
+.logo a {
+  text-decoration: none; 
+}
+
+.logo a:hover {
+  text-decoration: none;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
@@ -390,4 +398,5 @@ footer {
     .perfil {
         flex-direction: row;
     }
+
 }
