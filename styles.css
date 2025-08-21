@@ -34,11 +34,12 @@ header h1 {
 
 header .logo a {
     text-decoration: none;
+    color: var(--cor-texto);
 }
 
 header .logo a:hover {
     text-decoration: none;
-    color: var(--cor-principal);
+    color: var(--cor-texto);
 }
 
 header .logo h1 {
@@ -403,6 +404,5 @@ footer {
     }
 
 }
-
 
 
