@@ -29,19 +29,13 @@ header {
 header h1 {
     margin: 0;
     font-size: 1.8rem;
+    text-decoration: none;
 }
 
 header .logo h1 {
     font-family: 'Fredoka One', sans-serif;
     font-size: 2.5rem;
-}
-
-.logo a {
-  text-decoration: none; 
-}
-
-.logo a:hover {
-  text-decoration: none;
+    text-decoration: none; 
 }
 
 nav ul {
@@ -400,3 +394,4 @@ footer {
     }
 
 }
+
