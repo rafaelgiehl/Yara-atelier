@@ -14,6 +14,17 @@ body {
     padding: 0;
     background-color: var(--cor-fundo-claro);
     color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 /* Estilos do Cabeçalho e Navegação */
@@ -24,6 +35,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 
 header h1 {
@@ -48,6 +60,34 @@ header .logo h1 {
     text-decoration: none; 
 }
 
+/* Estilos do ícone do carrinho (visível no desktop) */
+.cart-icon {
+    position: relative;
+    font-size: 2rem;
+    text-decoration: none;
+    color: var(--cor-texto);
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon .cart-count {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 0.2rem 0.6rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20px;
+}
+
+/* Menu de navegação desktop */
 nav ul {
     list-style: none;
     margin: 0;
@@ -75,6 +115,11 @@ nav a.active {
 
 nav a:hover {
     background-color: var(--cor-secundaria);
+}
+
+/* Oculta o botão do menu e o link de carrinho de compras no desktop */
+.mobile-menu-btn, .cart-menu-item {
+    display: none;
 }
 
 /* Estilos da Seção Principal (Hero) */
@@ -318,12 +363,14 @@ footer {
 /* --- Menu de Navegação para Celular --- */
 /* Estilos para o botão do menu hambúrguer */
 .mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
+    background: transparent; /* Remove o fundo */
+    border: none; /* Remove a borda */
     cursor: pointer;
-    padding: 10px;
-    z-index: 100;
+    padding: 10px; /* Adiciona um espaço para facilitar o clique */
+}
+
+.mobile-menu-btn:focus {
+    outline: none; /* Remove o contorno que aparece ao focar no botão */
 }
 
 .mobile-menu-btn span {
@@ -351,12 +398,16 @@ footer {
 /* Media Query para telas de celular (até 768px de largura) */
 @media (max-width: 768px) {
     header {
-        flex-direction: row;
         justify-content: space-between;
-        align-items: center;
+    }
+    
+    /* Mostra o botão do menu no mobile */
+    .mobile-menu-btn {
+        display: block;
     }
 
-    nav {
+    /* Oculta o menu de navegação completo no mobile */
+    nav.nav-menu {
         display: none;
         flex-direction: column;
         width: 100%;
@@ -367,42 +418,211 @@ footer {
         background-color: var(--cor-principal);
         justify-content: center;
         align-items: center;
-        z-index: 99;
+        z-index: 1000;
     }
 
-    nav.active {
+    nav.nav-menu.active {
         display: flex;
     }
 
-    nav ul {
+    nav.nav-menu ul {
         flex-direction: column;
         text-align: center;
     }
 
-    nav li {
+    nav.nav-menu li {
         margin: 1.5rem 0;
     }
 
-    nav a {
+    nav.nav-menu a {
         font-size: 1.5rem;
         color: var(--cor-texto);
     }
-
-    .mobile-menu-btn {
-        display: block;
-    }
-
+    
     .colecoes-grid {
         grid-template-columns: 1fr;
     }
+
+    /* Regras para o Carrossel em telas pequenas (mostrar 1 item por vez) */
+    .carousel-track .produto-item {
+        min-width: 100%;
+    }
+    
+    /* Mostra o link do carrinho no menu mobile */
+    .cart-menu-item {
+        display: block;
+    }
+
+    /* Oculta o ícone do carrinho de desktop no mobile */
+    .cart-icon {
+        display: none;
+    }
 }
+
+
+/* Media Query para tablets (entre 769px e 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-track .produto-item {
+        min-width: 50%; /* Mostra 2 itens por vez */
+    }
+}
+
 
 /* Media Query para telas maiores, para o layout do perfil da artesã */
 @media (min-width: 768px) {
     .perfil {
         flex-direction: row;
     }
-
 }
 
+/* --- Estilos para o Carrossel (Seção Especialidades) --- */
 
+.carousel-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Oculte a barra de rolagem */
+.carousel-track {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth; /* Adiciona a rolagem suave */
+}
+
+.carousel-track-wrapper {
+    flex-grow: 1;
+    overflow: hidden;
+    margin: 0 1rem;
+}
+
+.carousel-track .produto-item {
+    min-width: 25%; /* Mostra 4 itens por vez em telas grandes */
+    box-sizing: border-box;
+    padding: 0 0.5rem;
+}
+
+.carousel-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--cor-principal);
+    cursor: pointer;
+    transition: color 0.3s;
+    user-select: none;
+}
+
+.carousel-btn:hover {
+    color: var(--cor-secundaria);
+}
+
+/* Oculta as regras de grid para a seção de destaques */
+.destaques .colecoes-grid {
+    display: none;
+}
+.nav-menu.active {
+    z-index: 9999;
+}
+
+/* Estilos da Página do Carrinho */
+.pagina-carrinho {
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.carrinho-vazio {
+    margin-top: 2rem;
+}
+
+.carrinho-vazio p {
+    font-size: 1.2rem;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.carrinho-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+
+.carrinho-item img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.carrinho-detalhes {
+    text-align: left;
+    flex-grow: 1;
+}
+
+.carrinho-detalhes h4 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.carrinho-detalhes p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.carrinho-acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+}
+
+.carrinho-acoes .quantidade {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.carrinho-acoes .quantidade button {
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.carrinho-acoes .remover-btn {
+    background-color: transparent;
+    border: none;
+    color: var(--cor-principal);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.carrinho-resumo {
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    text-align: right;
+}
+
+.carrinho-resumo p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+}
+
+.btn-finalizar {
+    width: 100%;
+    text-align: center;
+}

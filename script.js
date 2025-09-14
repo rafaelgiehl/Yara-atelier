@@ -1,33 +1,75 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Seleciona os elementos principais
-    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-    const navMenu = document.querySelector('nav');
-    const navLinks = document.querySelectorAll('nav a');
-    const logoLink = document.querySelector('.logo a'); // Seleciona o link do logo
 
-    // Função para fechar o menu
+    // --- Funcionalidade do Menu Hambúrguer ---
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    const logoLink = document.querySelector('.logo a');
+
+    // Abre e fecha o menu
+    const toggleMenu = () => {
+        if (navMenu) {
+            navMenu.classList.toggle('active');
+        }
+        if (mobileMenuBtn) {
+            mobileMenuBtn.classList.toggle('active');
+        }
+    };
+
+    // Fecha o menu
     const closeMenu = () => {
-        if (navMenu.classList.contains('active')) {
+        if (navMenu) {
             navMenu.classList.remove('active');
+        }
+        if (mobileMenuBtn) {
             mobileMenuBtn.classList.remove('active');
         }
     };
 
-    // Abre/fecha o menu ao clicar no botão hambúrguer
-    if (mobileMenuBtn && navMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-        });
+    // Adiciona os event listeners
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', toggleMenu);
     }
 
-    // Fecha o menu ao clicar em qualquer link de navegação
+    if (logoLink) {
+        logoLink.addEventListener('click', closeMenu);
+    }
+    
     navLinks.forEach(link => {
         link.addEventListener('click', closeMenu);
     });
 
-    // Fecha o menu ao clicar no logo
-    if (logoLink) {
-        logoLink.addEventListener('click', closeMenu);
+    // --- Funcionalidade do Carrossel de Destaques ---
+    const carouselTrackWrapper = document.querySelector('.carousel-track-wrapper');
+    const carouselTrack = document.querySelector('.carousel-track');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+
+    // Verifica se os elementos do carrossel existem na página
+    if (carouselTrackWrapper && prevBtn && nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const firstItem = carouselTrack.querySelector('.produto-item');
+            if (firstItem) {
+                // Rola o wrapper, que é o elemento com overflow: hidden;
+                const itemWidth = firstItem.offsetWidth;
+                carouselTrackWrapper.scrollBy({
+                    left: itemWidth + 24, // 24px é o espaçamento de 1.5rem
+                    behavior: 'smooth'
+                });
+            }
+        });
+
+        prevBtn.addEventListener('click', () => {
+            const firstItem = carouselTrack.querySelector('.produto-item');
+            if (firstItem) {
+                // Rola o wrapper, que é o elemento com overflow: hidden;
+                const itemWidth = firstItem.offsetWidth;
+                carouselTrackWrapper.scrollBy({
+                    left: -(itemWidth + 24), // 24px é o espaçamento de 1.5rem
+                    behavior: 'smooth'
+                });
+            }
+        });
     }
+
 });

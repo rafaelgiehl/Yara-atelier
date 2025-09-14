@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Conta - Yara Atelier</title>
-    
+    <title>Carrinho de Compras - Yara Atelier</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -30,10 +30,8 @@
                 <li><a href="colecoes.html">Coleções</a></li>
                 <li><a href="outlet.html">Outlet</a></li>
                 <li><a href="historia.html">História</a></li>
-                <li><a href="minha-conta.html" class="active">Minha Conta</a></li>
-                <li class="cart-menu-item">
-                    <a href="carrinho.html">Carrinho de Compras</a>
-                </li>
+                <li><a href="minha-conta.html">Minha Conta</a></li>
+                <li class="cart-menu-item"><a href="carrinho.html">Carrinho de Compras</a></li>
             </ul>
         </nav>
         <a href="carrinho.html" class="cart-icon" aria-label="Carrinho de compras">
@@ -43,22 +41,19 @@
     </header>
 
     <main>
-        <section class="pagina-minha-conta">
-            <h2>Acessar Minha Conta</h2>
-            <div class="login-form-container">
-                <form action="#" method="POST" class="login-form">
-                    <div class="form-group">
-                        <label for="email">E-mail</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Senha</label>
-                        <input type="password" id="password" name="password" required>
-                    </div>
-                    <button type="submit" class="btn">Entrar</button>
-                    <a href="#" class="link-cadastro">Esqueci minha senha</a>
-                    <a href="#" class="link-cadastro">Ainda não sou cliente? Cadastre-se</a>
-                </form>
+        <section class="pagina-carrinho">
+            <h2>Seu Carrinho</h2>
+            <div class="carrinho-vazio">
+                <p>Seu carrinho está vazio.</p>
+                <a href="colecoes.html" class="btn">Continuar Comprando</a>
+            </div>
+            
+            <div class="carrinho-itens">
+                </div>
+            
+            <div class="carrinho-resumo" style="display: none;">
+                <p>Total: <span id="total-carrinho">R$ 0,00</span></p>
+                <a href="#" class="btn btn-finalizar">Finalizar Compra</a>
             </div>
         </section>
     </main>
@@ -68,5 +63,6 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="carrinho.js"></script>
 </body>
 </html>
