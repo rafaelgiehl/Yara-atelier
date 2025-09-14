@@ -395,70 +395,6 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-/* Media Query para telas de celular (até 768px de largura) */
-@media (max-width: 768px) {
-    header {
-        justify-content: space-between;
-    }
-    
-    /* Mostra o botão do menu no mobile */
-    .mobile-menu-btn {
-        display: block;
-    }
-
-    /* Oculta o menu de navegação completo no mobile */
-    nav.nav-menu {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        height: 100vh;
-        position: fixed;
-        top: 0;
-        left: 0;
-        background-color: var(--cor-principal);
-        justify-content: center;
-        align-items: center;
-        z-index: 1000;
-    }
-
-    nav.nav-menu.active {
-        display: flex;
-    }
-
-    nav.nav-menu ul {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    nav.nav-menu li {
-        margin: 1.5rem 0;
-    }
-
-    nav.nav-menu a {
-        font-size: 1.5rem;
-        color: var(--cor-texto);
-    }
-    
-    .colecoes-grid {
-        grid-template-columns: 1fr;
-    }
-
-    /* Regras para o Carrossel em telas pequenas (mostrar 1 item por vez) */
-    .carousel-track .produto-item {
-        min-width: 100%;
-    }
-    
-    /* Mostra o link do carrinho no menu mobile */
-    .cart-menu-item {
-        display: block;
-    }
-
-    /* Oculta o ícone do carrinho de desktop no mobile */
-    .cart-icon {
-        display: none;
-    }
-}
-
 
 /* Media Query para tablets (entre 769px e 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
@@ -625,4 +561,69 @@ footer {
 .btn-finalizar {
     width: 100%;
     text-align: center;
+}
+
+/* Media Query para telas de celular (até 768px de largura) */
+@media (max-width: 768px) {
+    header {
+        justify-content: space-between;
+    }
+    
+    /* Mostra o botão do menu no mobile */
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    /* Oculta o menu de navegação completo no mobile */
+    nav.nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: var(--cor-principal);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    nav.nav-menu.active {
+        display: flex;
+    }
+
+    nav.nav-menu ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav.nav-menu li {
+        margin: 1.5rem 0;
+    }
+
+    nav.nav-menu a {
+        font-size: 1.5rem;
+        color: var(--cor-texto);
+    }
+    
+    .colecoes-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Regras para o Carrossel em telas pequenas (mostrar 2 itens por vez) */
+    .carousel-track .produto-item {
+        min-width: calc(50% - 1.5rem); /* Garante que dois itens caibam na tela com espaçamento */
+        padding: 0 0.5rem;
+    }
+
+    /* Mostra o link do carrinho no menu mobile */
+    .cart-menu-item {
+        display: block;
+    }
+
+    /* Oculta o ícone do carrinho de desktop no mobile */
+    .cart-icon {
+        display: none;
+    }
 }

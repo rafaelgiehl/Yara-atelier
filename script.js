@@ -53,7 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Rola o wrapper, que é o elemento com overflow: hidden;
                 const itemWidth = firstItem.offsetWidth;
                 carouselTrackWrapper.scrollBy({
-                    left: itemWidth + 24, // 24px é o espaçamento de 1.5rem
+                    // Rola o equivalente a dois itens de uma vez
+                    left: (itemWidth * 2) + 24, 
                     behavior: 'smooth'
                 });
             }
@@ -65,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Rola o wrapper, que é o elemento com overflow: hidden;
                 const itemWidth = firstItem.offsetWidth;
                 carouselTrackWrapper.scrollBy({
-                    left: -(itemWidth + 24), // 24px é o espaçamento de 1.5rem
+                    // Rola o equivalente a dois itens de uma vez
+                    left: -((itemWidth * 2) + 24),
                     behavior: 'smooth'
                 });
             }
