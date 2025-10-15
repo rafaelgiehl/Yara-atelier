@@ -35,7 +35,6 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
 }
 
 header h1 {
@@ -122,42 +121,126 @@ nav a:hover {
     display: none;
 }
 
-/* Estilos da Seção Principal (Hero) */
+/* ===== BANNER CLICÁVEL ===== */
 .hero {
-    background-image: url('images/banner2.png');
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+.hero-carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Cada slide agora é um link clicável */
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    text-align: center;
-    padding: 0;
-    min-height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    text-decoration: none; /* Remove sublinhado do link */
+    cursor: pointer; /* Mãozinha ao passar mouse */
 }
 
-.hero .hero-content {
-    background-color: rgba(255, 255, 255, 0.7);
+/* Efeito hover sutil no slide */
+.slide:hover .slide-content {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
+}
+
+/* Imagens de fundo para cada slide */
+.slide:nth-child(1) {
+    background-image: url('images/bannerco01new.png');
+}
+
+.slide:nth-child(2) {
+    background-image: url('images/bannerco02.png');
+}
+
+.slide:nth-child(3) {
+    background-image: url('images/bannerco03.png');    
+}
+.slide:nth-child(4) {
+    background-image: url('images/banner04flor.png');    
+}
+
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Overlay para melhor legibilidade do texto */
+.slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: -1;
+}
+
+/* ===== TEXTO COM SOMBRA (SEM CAIXA BRANCA) ===== */
+.slide-content {
+    text-align: center;
+    color: white;
+    z-index: 2;
+    background-color: transparent;
     padding: 2rem;
     border-radius: 10px;
-    width: 100%;
-    max-width: 100vw;
-    box-sizing: border-box;
+    max-width: 600px;
+    margin: 0 2rem;
+    transition: transform 0.3s ease; /* Transição suave para hover */
 }
 
-.hero h2 {
+.slide-content h2 {
     font-size: 3rem;
     margin-bottom: 1rem;
-    color: var(--cor-texto);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
 }
 
-.hero p {
+.slide-content p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+    color: white;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+}
+
+/* Botão visual (agora é um span) */
+.slide-content .btn {
+    display: inline-block;
+    background-color: var(--cor-principal);
     color: var(--cor-texto);
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer; /* Mantém aparência de botão */
+}
+
+.slide-content .btn:hover {
+    transform: scale(1.05);
 }
 
 .btn {
@@ -261,7 +344,6 @@ nav a:hover {
     margin: 0 1rem 1rem 1rem;
     text-align: left;
 }
-
 
 /* Estilos da Página História */
 .container-historia {
@@ -395,24 +477,7 @@ footer {
     transform: translateY(-8px) rotate(-45deg);
 }
 
-
-/* Media Query para tablets (entre 769px e 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .carousel-track .produto-item {
-        min-width: 50%; /* Mostra 2 itens por vez */
-    }
-}
-
-
-/* Media Query para telas maiores, para o layout do perfil da artesã */
-@media (min-width: 768px) {
-    .perfil {
-        flex-direction: row;
-    }
-}
-
 /* --- Estilos para o Carrossel (Seção Especialidades) --- */
-
 .carousel-container {
     position: relative;
     max-width: 1200px;
@@ -563,6 +628,211 @@ footer {
     text-align: center;
 }
 
+/* ------------------------------------------- */
+/* --- ESTILOS DA PÁGINA DE DETALHES DE PRODUTO --- */
+/* ------------------------------------------- */
+.pagina-produto {
+    padding: 3rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.produto-container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    text-align: left; /* Garante que o texto nas colunas laterais comece à esquerda */
+}
+
+/* Seção de Imagens */
+.produto-galeria {
+    flex: 1;
+    max-width: 50%;
+    min-width: 300px;
+}
+
+.imagem-principal-container {
+    width: 100%;
+    padding-top: 100%; /* Força proporção 1:1 */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.imagem-principal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.miniaturas {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 5px;
+}
+
+.miniatura-item {
+    width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+    object-fit: cover;
+}
+
+.miniatura-item:hover, .miniatura-item.active {
+    border-color: var(--cor-principal);
+}
+
+/* Seção de Informações do Produto */
+.produto-info {
+    flex: 1;
+    max-width: 50%;
+    min-width: 350px;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto-info h2 {
+    font-size: 2.5rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.produto-info .preco {
+    font-size: 1.8rem;
+    color: var(--cor-principal);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.produto-info .parcelamento {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.produto-info .descricao h3 {
+    font-size: 1.2rem;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.opcoes-compra {
+    margin-top: 30px;
+    display: flex; /* Alinha opções e botão na mesma linha no desktop */
+    align-items: flex-end;
+    flex-wrap: wrap; /* Permite quebrar linha no mobile */
+}
+
+.opcoes-compra label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.opcoes-compra select, .opcoes-compra input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 15px;
+    min-width: 80px;
+}
+
+.btn-comprar {
+    background-color: var(--cor-principal);
+    color: var(--cor-texto);
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    white-space: nowrap; /* Impede que o texto do botão quebre */
+}
+
+.btn-comprar:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* --- CORREÇÃO DE IMAGEM DISTORCIDA (SOBRESCRITA) --- */
+
+/* 1. Para as imagens do Carrossel */
+.carousel-track .produto-item .produto-img-container img {
+    height: 100% !important; 
+    width: 100% !important;
+    object-fit: cover !important; 
+}
+
+/* 2. Para a imagem da Página de Detalhes */
+.pagina-produto .produto-galeria .imagem-principal {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+}
+
+/* 3. Para as Miniaturas na Página de Detalhes */
+.pagina-produto .miniatura-item {
+    object-fit: cover !important;
+}
+/* --- ESTILOS PARA OS BOTÕES DO CARROSSEL HERO (NOVO) --- */
+.hero-carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background-color: rgba(245, 169, 184, 0.7); /* Cor principal com transparência */
+    color: var(--cor-texto);
+    border: none;
+    padding: 1rem 0.5rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 100px;
+    width: 50px;
+}
+
+.hero-carousel-btn:hover {
+    background-color: var(--cor-principal); /* Cor principal sem transparência */
+}
+
+.hero-carousel-btn.prev-btn {
+    left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.hero-carousel-btn.next-btn {
+    right: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* ===== MEDIA QUERIES ===== */
+
+/* Media Query para tablets (entre 769px e 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .carousel-track .produto-item {
+        min-width: 50%; /* Mostra 2 itens por vez */
+    }
+}
+
+/* Media Query para telas maiores, para o layout do perfil da artesã */
+@media (min-width: 768px) {
+    .perfil {
+        flex-direction: row;
+    }
+}
+
 /* Media Query para telas de celular (até 768px de largura) */
 @media (max-width: 768px) {
     header {
@@ -625,5 +895,23 @@ footer {
     /* Oculta o ícone do carrinho de desktop no mobile */
     .cart-icon {
         display: none;
+    }
+
+    /* Responsivo para o carousel do banner */
+    .hero {
+        height: 400px;
+    }
+    
+    .slide-content {
+        padding: 2rem;
+        margin: 0 1rem;
+    }
+    
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
     }
 }

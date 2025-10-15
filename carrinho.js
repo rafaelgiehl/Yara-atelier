@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const carrinhoVazioMensagem = document.querySelector('.carrinho-vazio');
     const carrinhoResumo = document.querySelector('.carrinho-resumo');
     
-    // Simulação de itens do carrinho (em uma aplicação real, viria de uma API ou localStorage)
     let carrinho = [
         { id: 1, nome: 'Almofada Conforto', preco: 99.90, imagem: 'images/produtoA.jpg', quantidade: 1 },
         { id: 2, nome: 'Almofada Poá', preco: 119.90, imagem: 'images/produtoB.jpg', quantidade: 2 }
@@ -78,6 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Inicia a renderização do carrinho
+
     renderizarCarrinho();
 });
