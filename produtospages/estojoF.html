@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estojo Florescer - Yara Atelier</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css"> </head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="../index.html"><h1>YARA</h1></a>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../colecoes.html">Coleções</a></li>
+                <li><a href="../outlet.html">Outlet</a></li>
+                <li><a href="../historia.html">História</a></li>
+                <li><a href="../minha-conta.html">Minha Conta</a></li>
+                <li class="cart-menu-item">
+                    <a href="../carrinho.html">Carrinho de Compras</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <a href="../carrinho.html" class="cart-icon" aria-label="Carrinho de compras">
+            🛒
+            <span class="cart-count">0</span>
+        </a>
+    </header>
+
+    <main>
+        <section class="pagina-produto">
+            <div class="produto-container">
+
+                <div class="produto-galeria">
+                    <div class="imagem-principal-container">
+                        <img id="imagem-principal" 
+                             src="../images/estojon.png" 
+                             alt="Estojo Florescer - Vista Frontal" 
+                             class="imagem-principal">
+                    </div>
+                    
+                    <div class="miniaturas">
+                        <img src="../images/estojon.png" 
+                             alt="Miniatura 1" 
+                             class="miniatura-item active" 
+                             data-full-image="../images/estojon.png">
+                             
+                        <img src="../images/estojon_aberto.png" 
+                             alt="Miniatura 2" 
+                             class="miniatura-item" 
+                             data-full-image="../images/estojon_aberto.png" 
+                             onerror="this.style.display='none'"> <img src="../images/estojon_detalhe.png" 
+                             alt="Miniatura 3" 
+                             class="miniatura-item" 
+                             data-full-image="../images/estojon_detalhe.png"
+                             onerror="this.style.display='none'"> </div>
+                </div>
+
+                <div class="produto-info">
+                    <h2>Estojo Florescer</h2>
+                    
+                    <p class="preco">R$ 80,00</p>
+                    <p class="parcelamento">ou 2x de R$ 40,00 sem juros</p>
+
+                    <div class="descricao">
+                        <h3>Descrição</h3>
+                        <p>Leve a organização e a beleza da primavera para o seu dia a dia com o Estojo Florescer. Confeccionado em tecido 100% algodão com estampa floral vibrante e forro interno reforçado. Ideal para guardar lápis, canetas, maquiagem ou pequenos objetos pessoais.</p>
+                        
+                        <h3>Características Técnicas</h3>
+                        <ul>
+                            <li>**Material:** Tecido 100% Algodão.</li>
+                            <li>**Fechamento:** Zíper de alta durabilidade.</li>
+                            <li>**Dimensões:** 20cm (Comprimento) x 10cm (Altura) x 8cm (Profundidade).</li>
+                            <li>**Forro:** Interno impermeável (opcional, dependendo da produção).</li>
+                        </ul>
+                    </div>
+
+                    <div class="opcoes-compra">
+                        <div class="form-group">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidade" value="1" min="1">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cor">Cor/Estampa:</label>
+                            <select id="cor">
+                                <option value="florescer">Florescer (Padrão)</option>
+                                <option value="rosa">Rosa Liso</option>
+                                <option value="azul">Xadrez Azul</option>
+                            </select>
+                        </div>
+                        
+                        <button class="btn-comprar">Adicionar ao Carrinho</button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yara Atelier. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script>
+        // Lógica de manipulação de quantidade e adição ao carrinho viria aqui
+        // e a lógica da Galeria de Imagens que será adicionada ao script.js
+    </script>
+</body>
+</html>

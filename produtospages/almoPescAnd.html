@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almofada de Pescoço Lillo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../styles.css"> 
+</head>
+<body>
+    
+    <header>
+        <div class="logo">
+            <a href="../index.html"><h1>YARA</h1></a>
+        </div>
+        
+        <button class="mobile-menu-btn" aria-label="Abrir menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="../index.html">Início</a></li>
+                <li><a href="../colecoes.html">Coleções</a></li>
+                <li><a href="../outlet.html">Outlet</a></li>
+                <li><a href="../historia.html">História</a></li>
+                <li><a href="../minha-conta.html">Minha Conta</a></li>
+                <li class="cart-menu-item">
+                    <a href="../carrinho.html">Carrinho de Compras</a>
+                </li>
+            </ul>
+        </nav>
+        
+        <a href="../carrinho.html" class="cart-icon" aria-label="Carrinho de compras">
+            🛒
+            <span class="cart-count">0</span>
+        </a>
+    </header>
+
+    <main class="pagina-produto">
+        <div class="produto-container">
+            
+            <div class="produto-galeria">
+                <div class="imagem-principal-container">
+                    <img id="imagemPrincipal" src="../images/almofplillo.png" alt="Almofada de Pescoço Andorinha" class="imagem-principal">
+                </div>
+                <div class="miniaturas">
+                    <img src="../images/almofplillo.png" alt="Almofada de Pescoço Principal" class="miniatura-item active">
+                    <img src="../images/pescoco_costas.jpg" alt="Almofada de Pescoço Costas" class="miniatura-item">
+                    <img src="../images/pescoco_detalhe.jpg" alt="Almofada de Pescoço Detalhe" class="miniatura-item">
+                </div>
+            </div>
+            
+            <div class="produto-info">
+                <h2>Almofada de Pescoço "Andorinha Azul"</h2>
+                
+                <span class="preco">R$ 75,00</span>
+                <span class="parcelamento">ou 3x de R$ 25,00 sem juros</span>
+                
+                <div class="descricao">
+                    <h3>Descrição do Produto</h3>
+                    <p>Ideal para viagens longas ou momentos de relaxamento em casa. A estampa Andorinha Azul, suave e minimalista, é perfeita para quem busca conforto sem abrir mão do estilo. Enchimento macio e capa lavável para maior praticidade.</p>
+                    <ul>
+                        <li>**Formato:** Ergonômico, ideal para suporte cervical.</li>
+                        <li>**Material:** Capa em Tricoline 100% Algodão.</li>
+                        <li>**Cuidado:** Capa removível com zíper, lavável à máquina.</li>
+                    </ul>
+                </div>
+                
+                <div class="opcoes-compra">
+                    <label for="cor-select">Cor/Estampa:</label>
+                    <select id="cor-select" name="cor">
+                        <option value="azul">Andorinha Azul (Estampa)</option>
+                        <option value="cinza">Cinza Liso</option>
+                        <option value="rosa">Rosa Liso</option>
+                    </select>
+
+                    <label for="quantidade-input">Qtd:</label>
+                    <input type="number" id="quantidade-input" name="quantidade" value="1" min="1" max="10">
+                    
+                    <button class="btn-comprar">ADICIONAR AO CARRINHO</button>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Yara Atelier. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="../script.js"></script>
+
+</body>
+</html>
